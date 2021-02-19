@@ -1,4 +1,39 @@
 body {
   border: 2px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 50%;
+  height: 50%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr 4fr 1fr;
+      grid-template-rows: 1fr 4fr 1fr;
+}
+
+.grid__header {
+  background-color: aquamarine;
+}
+
+.grid__footer {
+  background-color: beige;
+}
+
+.mainContents {
+  background-color: coral;
 }
 /*# sourceMappingURL=index.css.map */

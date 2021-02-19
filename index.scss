@@ -1,3 +1,26 @@
 body {
     border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container{
+    width: 50%;
+    height: 50%;
+    display: grid;
+    grid-template-rows: 1fr 4fr 1fr;
+}
+
+.grid__header{
+    background-color: aquamarine;
+}
+
+.grid__footer{
+    background-color: beige;
+}
+.mainContents{
+    background-color: coral;
 }
