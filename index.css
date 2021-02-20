@@ -40,6 +40,21 @@ body {
   padding: 1.5em;
 }
 
+.todoList {
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  -webkit-transition-timing-function: ease;
+          transition-timing-function: ease;
+}
+
+.todoList:hover {
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  -webkit-transition-timing-function: ease;
+          transition-timing-function: ease;
+  text-decoration: line-through;
+}
+
 form {
   margin-top: 2vh;
   text-align: center;
