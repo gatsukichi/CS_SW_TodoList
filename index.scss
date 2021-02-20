@@ -5,6 +5,7 @@ body {
     justify-content:center;
     align-items: center;
     height: 100vh;
+    background-color: #9DC8C8;
 }
 
 .container{
@@ -15,12 +16,24 @@ body {
 }
 
 .grid__header{
-    background-color: aquamarine;
+    background-color: #58C9B9;
 }
 
 .grid__footer{
-    background-color: beige;
+    background-color: #D1B6E1;
 }
 .mainContents{
-    background-color: coral;
+    background-color: #519D9E;
+    overflow: scroll;
+    padding: 1.5em;
+}
+
+form{
+    margin-top: 2vh;
+    text-align: center;
+}
+
+input{
+    width: 30%;
+    height: 3vh;
 }
