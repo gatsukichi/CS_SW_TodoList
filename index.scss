@@ -5,27 +5,37 @@ body {
     justify-content:center;
     align-items: center;
     height: 100vh;
-    background-color: #9DC8C8;
 }
 
 .container{
     width: 50%;
-    height: 50%;
+    height: 70%;
     display: grid;
-    grid-template-rows: 1fr 4fr 1fr;
+    grid-template-rows: 1fr 4fr 3fr 1fr;
 }
 
 .grid__header{
-    background-color: #58C9B9;
+    //background-color: #58C9B9;
+    // 텍스트 사이즈 조절 할것 
 }
 
 .grid__footer{
-    background-color: #D1B6E1;
+    //background-color: #D1B6E1;
 }
 .mainContents{
-    background-color: #519D9E;
-    overflow: scroll;
+    //background-color: #519D9E;
+    overflow-y: scroll;
+    &::-webkit-scrollbar{
+        display: none;
+    }
     padding: 1.5em;
+}
+.doneContents{
+    overflow-y: scroll;
+    &::-webkit-scrollbar{
+        display: none;
+    }
+    padding: 1.5em; 
 }
 
 .todoList{
@@ -37,14 +47,18 @@ body {
         text-decoration: line-through;
     }
 }
+.isDone{
+    text-decoration: line-through;
+    color: grey;
+}
 
 
 form{
     margin-top: 2vh;
-    text-align: center;
+    margin-left: 2vh;
 }
 
 input{
-    width: 30%;
+    width: 50%;
     height: 3vh;
 }

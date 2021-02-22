@@ -14,30 +14,33 @@ body {
       -ms-flex-align: center;
           align-items: center;
   height: 100vh;
-  background-color: #9DC8C8;
 }
 
 .container {
   width: 50%;
-  height: 50%;
+  height: 70%;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 1fr 4fr 1fr;
-      grid-template-rows: 1fr 4fr 1fr;
-}
-
-.grid__header {
-  background-color: #58C9B9;
-}
-
-.grid__footer {
-  background-color: #D1B6E1;
+  -ms-grid-rows: 1fr 4fr 3fr 1fr;
+      grid-template-rows: 1fr 4fr 3fr 1fr;
 }
 
 .mainContents {
-  background-color: #519D9E;
-  overflow: scroll;
+  overflow-y: scroll;
   padding: 1.5em;
+}
+
+.mainContents::-webkit-scrollbar {
+  display: none;
+}
+
+.doneContents {
+  overflow-y: scroll;
+  padding: 1.5em;
+}
+
+.doneContents::-webkit-scrollbar {
+  display: none;
 }
 
 .todoList {
@@ -55,13 +58,18 @@ body {
   text-decoration: line-through;
 }
 
+.isDone {
+  text-decoration: line-through;
+  color: grey;
+}
+
 form {
   margin-top: 2vh;
-  text-align: center;
+  margin-left: 2vh;
 }
 
 input {
-  width: 30%;
+  width: 50%;
   height: 3vh;
 }
 /*# sourceMappingURL=index.css.map */

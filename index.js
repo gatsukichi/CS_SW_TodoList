@@ -21,12 +21,15 @@ const getKey = function(){
 const getStorageData = (keys)=>{
     //keys => array
     let data = keys.reduce((acc,cur)=>{
-        return [ ...acc , {"key" : cur, "value":JSON.parse(localStorage.getItem(cur))} ]
+        let temp = JSON.parse(localStorage.getItem(cur))
+        console.log(temp);
+        return [ ...acc , {"key" : cur, "value" : temp.behavior , "isDone":temp.isDone}]
     },[])
     return data;
 }
 const sortByDate = (data)=>{
     //data ==> array
+    console.log(data)
     data.sort((a,b)=>{
         if (a.value.uploaded > b.value.uploaded){
             return 1
@@ -37,7 +40,10 @@ const sortByDate = (data)=>{
     return data;
 }
 const removeData = (id)=>{
+    let copyJson = JSON.parse(localStorage.getItem(id));
+    copyJson.isDone=true;
     localStorage.removeItem(id);
+    localStorage.setItem(id,JSON.stringify(copyJson));
 }
 
 //Dom
@@ -47,6 +53,12 @@ const blindList = ()=>{
     todoLists.forEach((el)=>{
         el.remove()
     })
+
+    const doneLists = document.querySelectorAll(".isDone")
+    doneLists.forEach((el)=>{
+        el.remove();
+    })
+
 }
 const getValue = function(){
     return document.querySelector("input").value;
@@ -58,15 +70,16 @@ const onSubmit = (event)=>{
     let date = new Date()
     const toDo = {
         "behavior" : data,
-        "uploaded" : date
+        "uploaded" : date,
+        "isDone" : false
     }
     console.log(JSON.stringify(toDo))
-
 
     localStorage.setItem(ID(),JSON.stringify(toDo))
     event.target.something.value=""
     blindList();
     makeTodoList();
+    makeDoneList();
 }
 //이런 방법 뿐인지 고민은 된다. 
 // window.setTimeout(() => {
@@ -77,18 +90,38 @@ window.onload = function() {
     //console.log(Form);
     Form.addEventListener('submit', onSubmit)
     makeTodoList();
+    makeDoneList();
 };
 
 const makeTodoList = ()=>{
     let data = sortByDate(getStorageData(getKey()))
     const mainContents = document.querySelector(".mainContents")
-    data.map((el)=>{
+    console.log(data);
+    data.filter((el)=>{
+        return !el.isDone
+    }).map((el)=>{
         const newLi = document.createElement("li")
         console.log(el)
-        newLi.textContent = el.value.behavior;
+        newLi.textContent = el.value;
         newLi.classList= "todoList";
         newLi.setAttribute("id", el.key);
         mainContents.appendChild(newLi)
+        newLi.addEventListener("click",clickHandler)
+    })
+}
+
+const makeDoneList = ()=>{
+    let data = sortByDate(getStorageData(getKey()))
+    const doneContents = document.querySelector(".doneContents")
+    data.filter((el)=>{
+        return el.isDone
+    }).map((el)=>{
+        const newLi = document.createElement("li")
+        console.log(el)
+        newLi.textContent = el.value;
+        newLi.classList= "isDone"
+        newLi.setAttribute("id", el.key);
+        doneContents.appendChild(newLi)
         newLi.addEventListener("click",clickHandler)
     })
 }
@@ -98,4 +131,5 @@ const clickHandler = (e)=>{
     removeData(e.target.id);
     blindList();
     makeTodoList();
+    makeDoneList();
 }
