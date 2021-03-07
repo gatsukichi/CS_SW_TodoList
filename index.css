@@ -16,6 +16,10 @@ body {
   height: 100vh;
 }
 
+* {
+  border-radius: 10px;
+}
+
 .container {
   width: 50%;
   height: 70%;
@@ -25,7 +29,58 @@ body {
       grid-template-rows: 1fr 4fr 3fr 1fr;
 }
 
+.grid__header {
+  background-color: #58C9B9;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.modal {
+  border: solid 1px black;
+  background-color: white;
+  width: 50vw;
+  height: 30vh;
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.modal_hide {
+  display: none;
+}
+
+.grid__header > p {
+  font-size: 1.5rem;
+}
+
+.grid__footer {
+  background-color: #D1B6E1;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 6fr 1fr;
+      grid-template-columns: 6fr 1fr;
+}
+
 .mainContents {
+  background-color: #519D9E;
   overflow-y: scroll;
   padding: 1.5em;
 }
@@ -35,12 +90,25 @@ body {
 }
 
 .doneContents {
+  background-color: antiquewhite;
   overflow-y: scroll;
   padding: 1.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .doneContents::-webkit-scrollbar {
   display: none;
+}
+
+#donelist_remove_btn {
+  width: 5em;
+  height: 5em;
 }
 
 .todoList {

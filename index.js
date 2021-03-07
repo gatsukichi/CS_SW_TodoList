@@ -45,7 +45,17 @@ const removeData = (id)=>{
     localStorage.removeItem(id);
     localStorage.setItem(id,JSON.stringify(copyJson));
 }
-
+const removeDoneData = ()=>{
+    let data = sortByDate(getStorageData(getKey()))
+    data.filter((el)=>{
+        return el.isDone
+    }).map((el)=>{
+        localStorage.removeItem(el.key);
+    })
+    blindList();
+    makeTodoList();
+    makeDoneList();
+}
 //Dom
 const blindList = ()=>{
     const todoLists = document.querySelectorAll(".todoList")
@@ -87,8 +97,15 @@ const onSubmit = (event)=>{
 
 window.onload = function() {
     const Form = document.querySelector(".form")
+    const doneListRemoveBtn = document.querySelector("#donelist_remove_btn");
+    const header = document.querySelector(".grid__header");
+    const modal = document.querySelector(".modal");
     //console.log(Form);
     Form.addEventListener('submit', onSubmit)
+    doneListRemoveBtn.addEventListener("click",removeDoneData)
+    header.addEventListener("mouseover",hoverIn)
+    modal.addEventListener("mouseleave",hoverOut)
+    
     makeTodoList();
     makeDoneList();
 };
@@ -132,4 +149,14 @@ const clickHandler = (e)=>{
     blindList();
     makeTodoList();
     makeDoneList();
+}
+
+const hoverIn = (e)=>{
+    const modal = document.querySelector(".modal")
+    modal.classList.remove("modal_hide")
+}
+
+const hoverOut = (e)=>{
+    const modal = document.querySelector(".modal")
+    modal.classList.add("modal_hide")
 }

@@ -6,24 +6,51 @@ body {
     align-items: center;
     height: 100vh;
 }
-
+*{
+    border-radius: 10px;
+}
 .container{
     width: 50%;
     height: 70%;
     display: grid;
     grid-template-rows: 1fr 4fr 3fr 1fr;
+    
 }
 
 .grid__header{
-    //background-color: #58C9B9;
-    // 텍스트 사이즈 조절 할것 
+    background-color: #58C9B9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal{
+    border: solid 1px black;
+    background-color: white;
+    width: 50vw;
+    height: 30vh;
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal_hide{
+    display: none;
+}
+.grid__header>p{
+    font-size: 1.5rem;
 }
 
 .grid__footer{
-    //background-color: #D1B6E1;
+    background-color: #D1B6E1;
+    display: grid;
+    grid-template-columns: 6fr 1fr
 }
 .mainContents{
-    //background-color: #519D9E;
+    background-color: #519D9E;
     overflow-y: scroll;
     &::-webkit-scrollbar{
         display: none;
@@ -31,11 +58,19 @@ body {
     padding: 1.5em;
 }
 .doneContents{
+    background-color: antiquewhite;
     overflow-y: scroll;
     &::-webkit-scrollbar{
         display: none;
     }
     padding: 1.5em; 
+    display: flex;
+    flex-direction: column;
+}
+
+#donelist_remove_btn{
+    width: 5em;
+    height: 5em;
 }
 
 .todoList{
